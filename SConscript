@@ -147,6 +147,15 @@ if GetDepend(['AT_DEVICE_USING_EC200X']):
         src += Glob('class/ec200x/at_socket_ec200x.c')
     if GetDepend(['AT_DEVICE_EC200X_SAMPLE']):
         src += Glob('samples/at_sample_ec200x.c')
+
+# CTM201
+if GetDepend(['AT_DEVICE_USING_CTM201']):
+    path += [cwd + '/class/ctm201']
+    src += Glob('class/ctm201/at_device_ctm201.c')
+    if GetDepend(['AT_USING_SOCKET']):
+        src += Glob('class/ctm201/at_socket_ctm201.c')
+    if GetDepend(['AT_DEVICE_CTM201_SAMPLE']):
+        src += Glob('samples/at_sample_ctm201.c')   
         
 group = DefineGroup('at_device', src, depend = ['PKG_USING_AT_DEVICE'], CPPPATH = path)
 
